@@ -21,10 +21,11 @@ ActiveAdmin.register Event do
       f.input :name
       f.input :date
       f.input :visited
+      f.input :users, as: :check_boxes, :input_html => {:multiple => true}
     end
     f.actions
   end
 
-  permit_params :name, :date, :visited, :user_id
+  permit_params :name, :date, :visited, :user_id, user_ids: [], event_ids: []
 
 end
