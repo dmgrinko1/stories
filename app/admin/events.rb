@@ -1,5 +1,10 @@
 ActiveAdmin.register Event do
 
+  filter :visited
+  filter :date, collection: -> {
+   Event.preload(:date).select { |date| date.date.present? }
+  }
+
   index do
     column :user
     column :name
